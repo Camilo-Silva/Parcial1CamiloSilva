@@ -1,8 +1,11 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Articulos.Models;
 
 public class Local
 {
     public int Id { get; set; }
+    [Display(Name="Sucursal")]
     public string NombreDeSucursal { get; set; }
     public string Direccion { get; set; }
     public string Telefono { get; set; }

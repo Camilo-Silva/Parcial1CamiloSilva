@@ -98,7 +98,7 @@ namespace Articulos.Controllers
             {
                 return NotFound();
             }
-
+            ModelState.Remove("Articulo");
             if (ModelState.IsValid)
             {
                 try

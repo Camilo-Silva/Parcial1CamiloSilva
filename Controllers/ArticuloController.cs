@@ -76,6 +76,7 @@ namespace Articulos.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Descripcion,Precio,Categoria,IsPromo,Stock")] Articulo articulo)
         {
+            ModelState.Remove("Locales");   
             if (ModelState.IsValid)
             {
                 _context.Add(articulo);
@@ -112,7 +113,7 @@ namespace Articulos.Controllers
             {
                 return NotFound();
             }
-
+            ModelState.Remove("Locales");   
             if (ModelState.IsValid)
             {
                 try
