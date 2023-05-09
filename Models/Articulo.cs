@@ -11,7 +11,7 @@ public class Articulo
 
     public decimal Precio { get; set; }
     public ArticuloCategoria Categoria { get; set; }
-
+    [Display(Name = "Es Promo")]
     public bool IsPromo { get; set; }
 
     public int Stock { get; set; }
