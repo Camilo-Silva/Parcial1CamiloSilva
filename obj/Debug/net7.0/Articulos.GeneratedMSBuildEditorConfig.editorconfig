@@ -9,77 +9,77 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Articulos
 build_property.RootNamespace = Articulos
-build_property.ProjectDir = c:\Users\camil\Claro drive\ISTEA\HerramientasDeProgramacion\Parcial1\Articulos\
+build_property.ProjectDir = C:\Users\camil\Claro drive\ISTEA\HerramientasDeProgramacion\Parcial1\Articulos\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = c:\Users\camil\Claro drive\ISTEA\HerramientasDeProgramacion\Parcial1\Articulos
+build_property.MSBuildProjectDirectory = C:\Users\camil\Claro drive\ISTEA\HerramientasDeProgramacion\Parcial1\Articulos
 build_property._RazorSourceGeneratorDebug = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Create.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWN1bG9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Delete.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWN1bG9cRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Details.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWN1bG9cRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Edit.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWN1bG9cRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Index.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Articulo/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXJ0aWN1bG9cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Home/Index.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Home/Privacy.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Create.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Delete.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Details.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Edit.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Index.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Local/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9jYWxcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Shared/Error.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/_ViewImports.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/_ViewStart.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[c:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Shared/_Layout.cshtml]
+[C:/Users/camil/Claro drive/ISTEA/HerramientasDeProgramacion/Parcial1/Articulos/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ymh448cvxk
