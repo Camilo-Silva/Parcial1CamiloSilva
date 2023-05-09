@@ -13,14 +13,15 @@
 <div class="row">
     <form method="get" asp-action="Index" asp-controller="Articulo">
         <div class="input-group"> 
-            <span class="input-group-text" id="basic-addon3">Buscador por prenda</span>
-            <input class="form-control" id="basic-url" aria-describedby="basic-addon3 basic-addon4" asp-for="DescripcionFilter">
-            <button class="btn btn-success" type="submit">Buscar</button>
+            <span class="input-group-text border-primary" id="basic-addon3">Buscador por prenda</span>
+            <input class="form-control border-primary" id="basic-url" aria-describedby="basic-addon3 basic-addon4" asp-for="DescripcionFilter">
+            <button class="btn btn-success border-primary" type="submit">Buscar</button>
         </div>                
     </form>
 </div>
-<table class="table">
-    <thead>
+<br>
+<table class="table table-bordered border-primary" >
+    <thead class="table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Articulos[0].Descripcion)
