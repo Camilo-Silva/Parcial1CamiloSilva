@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\CRUD_Articulos_y_Precios.props" />
-</Project>

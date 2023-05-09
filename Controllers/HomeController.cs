@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using CRUD_Articulos_y_Precios.Models;
+using Articulos.Models;
 
-namespace CRUD_Articulos_y_Precios.Controllers;
+namespace Articulos.Controllers;
 
 public class HomeController : Controller
 {

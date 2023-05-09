@@ -1,4 +1,4 @@
-namespace CRUD_Articulos_y_Precios.Models;
+namespace Articulos.Models;
 
 public class ErrorViewModel
 {
