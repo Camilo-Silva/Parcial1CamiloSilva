@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "6XU+yzVY9HXsE7gbsspz3h0sGTuzzzvRKPjmivPNclQFDZFtM7haLfTlAbgI3qeWSpD24EqEEa55LyS22DDgbw==",
+  "dgSpecHash": "RxSoi0gdtr5rv2VDtwo+1p8vHLIzEbkYVbyi8UBnicYVAJNk8cT9OM3e4jmuoTz1MteA3WSl9ah5kbTpl1hipg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\camil\\Claro drive\\ISTEA\\HerramientasDeProgramacion\\Parcial1\\CRUD_Articulos_y_Precios\\CRUD_Articulos_y_Precios.csproj",
+  "projectFilePath": "C:\\Users\\camil\\Claro drive\\ISTEA\\HerramientasDeProgramacion\\Parcial1\\Articulos\\Articulos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\camil\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\camil\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.11\\microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",

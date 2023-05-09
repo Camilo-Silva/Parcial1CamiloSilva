@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using CRUD_ARTICULOS_Y_PRECIOS.Data;
+using Articulos.Data;
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<ArticleContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("ArticleContext") ?? throw new InvalidOperationException("Connection string 'ArticleContext' not found.")));
+builder.Services.AddDbContext<ArticuloContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("ArticuloContext") ?? throw new InvalidOperationException("Connection string 'ArticuloContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
