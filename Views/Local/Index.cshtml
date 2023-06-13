@@ -1,16 +1,16 @@
-@model IEnumerable<Articulos.Models.Local>
+@model IEnumerable<Parcial2.Models.Local>
 
 @{
     ViewData["Title"] = "Index";
 }
 
-<h1>Alta de local</h1>
+<h1>Index</h1>
 
 <p>
-    <a asp-action="Create" class="btn btn-success">Crear Nuevo</a>
+    <a asp-action="Create">Create New</a>
 </p>
-<table class="table table-bordered border-primary">
-    <thead class="table-dark">
+<table class="table">
+    <thead>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.NombreDeSucursal)

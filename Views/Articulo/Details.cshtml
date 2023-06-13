@@ -1,4 +1,4 @@
-@using Articulos.ViewModels;
+@using Parcial2.ViewModels;
 @model ArticulosDetailViewModel
 
 @{
@@ -44,14 +44,27 @@
     </dl>
 </div>
  <div>
-        <ol>
-            @foreach (var item in Model.Locales)
-            {
-                <li>Local: @item.NombreDeSucursal - Dirección: @item.Direccion</li>
+    <ol>
+        @foreach (var item in Model.Locales)
+        {
+            <li>Local: @item.NombreDeSucursal - Dirección: @item.Direccion</li>
                 
-            }
-        </ol>
-    </div>
+        }
+     </ol>
+        
+</div>
+<div>
+    <ol>
+        @foreach (var item in Model.Talles)
+        {
+            <li>Talles: @item.Descripcion</li>
+                
+        }
+    </ol>
+</div>
+@* <div>
+    <li>Descripción de talle: @Model.Talles</li>
+</div> *@
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

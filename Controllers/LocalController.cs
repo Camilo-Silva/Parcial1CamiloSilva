@@ -5,10 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Articulos.Data;
-using Articulos.Models;
+using Parcial2.Data;
+using Parcial2.Models;
+using Parcial2.ViewModels;
 
-namespace Articulos.Controllers
+namespace Parcial2.Controllers
 {
     public class LocalController : Controller
     {
@@ -34,13 +35,18 @@ namespace Articulos.Controllers
                 return NotFound();
             }
 
-            var local = await _context.Local
-                .Include(l => l.Articulo)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var local = await _context.Local.Include(l => l.Articulo).FirstOrDefaultAsync(m => m.Id == id);
             if (local == null)
             {
                 return NotFound();
             }
+
+            // var viewModel = new LocalDetailViewModel();
+            // viewModel.NombreDeSucursal = local.NombreDeSucursal;
+            // viewModel.Direccion = local.Direccion;
+            // viewModel.Telefono = local.Telefono;
+            // viewModel.Mail = local.Mail;
+            // viewModel.Articulos = local.Articulos != null ? local.Articulos : new List<Articulo>();
 
             return View(local);
         }
@@ -98,7 +104,7 @@ namespace Articulos.Controllers
             {
                 return NotFound();
             }
-            ModelState.Remove("Articulo");
+
             if (ModelState.IsValid)
             {
                 try

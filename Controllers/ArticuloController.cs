@@ -2,14 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Parcial2.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Articulos.Data;
-using Articulos.Models;
-using Articulos.ViewModels;
+using Parcial2.Data;
+using Parcial2.Models;
+using Parcial2.ViewModels;
+using Parcial2.Utils;
 
-namespace Articulos.Controllers
+namespace Parcial2.Controllers
 {
     public class ArticuloController : Controller
     {
@@ -32,9 +34,9 @@ namespace Articulos.Controllers
             var model = new ArticulosViewModel();
             model.Articulos = await query.ToListAsync();
 
-              return _context.Articulo != null ? 
-                          View(model) :
-                          Problem("Entity set 'ArticuloContext.Articulo'  is null.");
+            return _context.Articulo != null ?
+                        View(model) :
+                        Problem("Entity set 'ArticuloContext.Articulo'  is null.");
         }
 
         // GET: Articulo/Details/5
@@ -44,9 +46,15 @@ namespace Articulos.Controllers
             {
                 return NotFound();
             }
+            
 
-            var articulo = await _context.Articulo.Include(x=> x.Locales).FirstOrDefaultAsync(m => m.Id == id);
-            if (articulo == null)
+            var articulo = await _context.Articulo.Include(x => x.Locales).FirstOrDefaultAsync(m => m.Id == id);
+            var articulo2 = await _context.Articulo.Include(x => x.Talles).FirstOrDefaultAsync(m => m.Id == id);
+            if ((articulo) == null)
+            {
+                return NotFound();
+            }
+            if ((articulo2) == null)
             {
                 return NotFound();
             }
@@ -56,9 +64,10 @@ namespace Articulos.Controllers
             viewModel.Descripcion = articulo.Descripcion;
             viewModel.Categoria = articulo.Categoria.ToString();
             viewModel.Precio = articulo.Precio;
-            viewModel.Stock = articulo.Stock;           
+            viewModel.Stock = articulo.Stock;
             viewModel.IsPromo = articulo.IsPromo;
             viewModel.Locales = articulo.Locales != null ? articulo.Locales : new List<Local>();
+            viewModel.Talles = articulo2.Talles != null ? articulo2.Talles : new List<Talle>();
 
             return View(viewModel);
         }
@@ -74,16 +83,24 @@ namespace Articulos.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Descripcion,Precio,Categoria,IsPromo,Stock")] Articulo articulo)
+        public async Task<IActionResult> Create([Bind("Id,Descripcion,Precio,Categoria,IsPromo,Stock")] ArticulosCreateViewModel articuloView)
         {
-            ModelState.Remove("Locales");   
+
             if (ModelState.IsValid)
             {
+                var articulo = new Articulo
+                {
+                    Descripcion = articuloView.Descripcion,
+                    Precio = articuloView.Precio,
+                    Categoria = (ArticuloCategoria)Enum.Parse(typeof(ArticuloCategoria), articuloView.Categoria),
+                    IsPromo = articuloView.IsPromo,
+                    Stock = articuloView.Stock
+                };
                 _context.Add(articulo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(articulo);
+            return View(articuloView);
         }
 
         // GET: Articulo/Edit/5
@@ -113,7 +130,7 @@ namespace Articulos.Controllers
             {
                 return NotFound();
             }
-            ModelState.Remove("Locales");   
+            ModelState.Remove("Locales");
             if (ModelState.IsValid)
             {
                 try
@@ -169,14 +186,14 @@ namespace Articulos.Controllers
             {
                 _context.Articulo.Remove(articulo);
             }
-            
+
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool ArticuloExists(int id)
         {
-          return (_context.Articulo?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Articulo?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using Articulos.Models;
+using Parcial2.Models;
 
-namespace Articulos.ViewModels;
+namespace Parcial2.ViewModels;
 
 public class ArticulosDetailViewModel
 {
@@ -18,4 +18,5 @@ public class ArticulosDetailViewModel
 
     // Relacionamos la lista de Locales con el Articulo
     public virtual List<Local> Locales { get; set; }
+    public virtual List<Talle> Talles { get; set; }
 }

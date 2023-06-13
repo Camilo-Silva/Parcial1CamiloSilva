@@ -1,4 +1,4 @@
-namespace Articulos.Utils;
+namespace Parcial2.Utils;
 
 public enum ArticuloCategoria
 {

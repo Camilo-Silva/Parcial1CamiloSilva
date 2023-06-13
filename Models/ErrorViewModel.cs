@@ -1,4 +1,4 @@
-namespace Articulos.Models;
+namespace Parcial2.Models;
 
 public class ErrorViewModel
 {

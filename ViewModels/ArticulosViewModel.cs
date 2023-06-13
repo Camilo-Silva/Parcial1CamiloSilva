@@ -1,6 +1,6 @@
-using Articulos.Models;
+using Parcial2.Models;
 
-namespace Articulos.ViewModels;
+namespace Parcial2.ViewModels;
 
 public class ArticulosViewModel
 {

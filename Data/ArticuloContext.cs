@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Articulos.Models;
+using Parcial2.Models;
 
-namespace Articulos.Data
+namespace Parcial2.Data
 {
     public class ArticuloContext : DbContext
     {
@@ -14,16 +14,23 @@ namespace Articulos.Data
         {
         }
 
-        public DbSet<Articulos.Models.Articulo> Articulo { get; set; } = default!;
+        public DbSet<Parcial2.Models.Articulo> Articulo { get; set; } = default!;
 
-        public DbSet<Articulos.Models.Local> Local { get; set; } = default!;
+        public DbSet<Parcial2.Models.Local> Local { get; set; } = default!;
+
+        public DbSet<Parcial2.Models.Talle> Talle { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Articulo>()
             .HasMany(p => p.Locales)
             .WithOne(p => p.Articulo)
-            .HasForeignKey(p => p.ArticuloId);            
+            .HasForeignKey(p => p.ArticuloId);   
+
+            modelBuilder.Entity<Articulo>()
+            .HasMany(p => p.Talles)
+            .WithMany(p => p.Articulos)
+            .UsingEntity("ArticuloTalle");
         }
     }
 }
