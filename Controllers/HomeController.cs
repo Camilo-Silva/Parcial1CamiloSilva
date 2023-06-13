@@ -1,8 +1,8 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Articulos.Models;
+using Parcial2.Models;
 
-namespace Articulos.Controllers;
+namespace Parcial2.Controllers;
 
 public class HomeController : Controller
 {

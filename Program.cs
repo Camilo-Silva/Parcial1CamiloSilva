@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Articulos.Data;
+using Parcial2.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ArticuloContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("ArticuloContext") ?? throw new InvalidOperationException("Connection string 'ArticuloContext' not found.")));

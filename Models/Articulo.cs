@@ -1,8 +1,6 @@
 using System.ComponentModel.DataAnnotations;
-using Articulos.Utils;
-
-namespace Articulos.Models;
-
+using Parcial2.Utils;
+namespace Parcial2.Models;
 public class Articulo
 {
     public int Id { get; set; }
@@ -18,5 +16,6 @@ public class Articulo
 
     // Relacionamos la lista de Locales con el Articulo
     public virtual List<Local> Locales { get; set; }
+    public virtual List<Talle> Talles { get; set; }
 
 }

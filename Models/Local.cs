@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Articulos.Models;
+namespace Parcial2.Models;
 
 public class Local
 {
@@ -16,4 +16,7 @@ public class Local
      
     // Propiedad virtual para usarse en el entityFramework para traer el artículo del local
     public virtual Articulo Articulo { get; set; }
+    // public virtual List<Articulo> Articulos { get; set; }
+    
+   
 }
