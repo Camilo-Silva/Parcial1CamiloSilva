@@ -73,7 +73,7 @@ namespace Parcial2.Controllers
             if (ModelState.IsValid)
             {
                 _localService.Create(local);
-             
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ArticuloId"] = new SelectList(new List<Articulo>(), "Id", "Id", local.ArticuloId);
@@ -108,7 +108,7 @@ namespace Parcial2.Controllers
             {
                 return NotFound();
             }
-
+            
             if (ModelState.IsValid)
             {
                 _localService.Update(local);

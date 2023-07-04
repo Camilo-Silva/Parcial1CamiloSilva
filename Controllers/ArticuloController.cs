@@ -10,51 +10,40 @@ using Parcial2.Data;
 using Parcial2.Models;
 using Parcial2.ViewModels;
 using Parcial2.Utils;
+using Parcial2.Services;
 
 namespace Parcial2.Controllers
 {
     public class ArticuloController : Controller
     {
-        private readonly ArticuloContext _context;
+        private readonly IArticuloService _articuloService;
 
-        public ArticuloController(ArticuloContext context)
+        public ArticuloController(IArticuloService articuloService)
         {
-            _context = context;
+            _articuloService = articuloService;
         }
 
         // GET: Articulo
-        public async Task<IActionResult> Index(string DescripcionFilter)
+        public async Task<IActionResult> Index(string descripcionFilter)
         {
-            var query = from descripcion in _context.Articulo select descripcion;
 
-            if (!string.IsNullOrEmpty(DescripcionFilter))
-            {
-                query = query.Where(x => x.Descripcion.ToUpper().Contains(DescripcionFilter));
-            }
             var model = new ArticulosViewModel();
-            model.Articulos = await query.ToListAsync();
+            model.Articulos = _articuloService.GetAll(descripcionFilter);
 
-            return _context.Articulo != null ?
-                        View(model) :
-                        Problem("Entity set 'ArticuloContext.Articulo'  is null.");
+            return View(model);
         }
 
         // GET: Articulo/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Articulo == null)
+            if (id == null)
             {
                 return NotFound();
             }
-            
 
-            var articulo = await _context.Articulo.Include(x => x.Locales).FirstOrDefaultAsync(m => m.Id == id);
-            var articulo2 = await _context.Articulo.Include(x => x.Talles).FirstOrDefaultAsync(m => m.Id == id);
+
+            var articulo = _articuloService.GetById(id.Value);
             if ((articulo) == null)
-            {
-                return NotFound();
-            }
-            if ((articulo2) == null)
             {
                 return NotFound();
             }
@@ -67,7 +56,7 @@ namespace Parcial2.Controllers
             viewModel.Stock = articulo.Stock;
             viewModel.IsPromo = articulo.IsPromo;
             viewModel.Locales = articulo.Locales != null ? articulo.Locales : new List<Local>();
-            viewModel.Talles = articulo2.Talles != null ? articulo2.Talles : new List<Talle>();
+            viewModel.Talles = articulo.Talles != null ? articulo.Talles : new List<Talle>();
 
             return View(viewModel);
         }
@@ -96,8 +85,7 @@ namespace Parcial2.Controllers
                     IsPromo = articuloView.IsPromo,
                     Stock = articuloView.Stock
                 };
-                _context.Add(articulo);
-                await _context.SaveChangesAsync();
+                _articuloService.Create(articulo);
                 return RedirectToAction(nameof(Index));
             }
             return View(articuloView);
@@ -106,12 +94,12 @@ namespace Parcial2.Controllers
         // GET: Articulo/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Articulo == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var articulo = await _context.Articulo.FindAsync(id);
+            var articulo = _articuloService.GetById(id.Value);
             if (articulo == null)
             {
                 return NotFound();
@@ -131,12 +119,12 @@ namespace Parcial2.Controllers
                 return NotFound();
             }
             ModelState.Remove("Locales");
+            ModelState.Remove("Talles");
             if (ModelState.IsValid)
             {
                 try
                 {
-                    _context.Update(articulo);
-                    await _context.SaveChangesAsync();
+                    _articuloService.Update(articulo);
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -151,19 +139,20 @@ namespace Parcial2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+           
             return View(articulo);
         }
 
         // GET: Articulo/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Articulo == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var articulo = await _context.Articulo
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var articulo = _articuloService.GetById(id.Value);
+                
             if (articulo == null)
             {
                 return NotFound();
@@ -177,23 +166,13 @@ namespace Parcial2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Articulo == null)
-            {
-                return Problem("Entity set 'ArticuloContext.Articulo'  is null.");
-            }
-            var articulo = await _context.Articulo.FindAsync(id);
-            if (articulo != null)
-            {
-                _context.Articulo.Remove(articulo);
-            }
-
-            await _context.SaveChangesAsync();
+            _articuloService.Delete(id);
             return RedirectToAction(nameof(Index));
         }
 
         private bool ArticuloExists(int id)
         {
-            return (_context.Articulo?.Any(e => e.Id == id)).GetValueOrDefault();
+            return _articuloService.GetById(id) != null;
         }
     }
 }
