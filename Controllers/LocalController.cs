@@ -16,11 +16,15 @@ namespace Parcial2.Controllers
     {
         //Inyectamos servicio
         private ILocalService _localService;
+        private IArticuloService _articuloService;
 
         //Pasamos por parametro Interface para poder implementar la interface
-        public LocalController(ILocalService localService)
+        public LocalController(
+            ILocalService localService,
+            IArticuloService articuloService)
         {
             _localService = localService;
+            _articuloService = articuloService;
         }
 
         // GET: Local
@@ -57,8 +61,8 @@ namespace Parcial2.Controllers
         // GET: Local/Create
         public IActionResult Create()
         {
-            // var menuList = _localService.GetAll();
-            ViewData["Articulo"] = new SelectList(new List<Articulo>(), "Id", "Articulo");
+            var articulosList = _articuloService.GetAll();
+            ViewData["Articulo"] = new SelectList(articulosList, "Id", "Articulo");
             return View();
         }
 
@@ -76,12 +80,12 @@ namespace Parcial2.Controllers
 
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArticuloId"] = new SelectList(new List<Articulo>(), "Id", "Id", local.ArticuloId);
+            ViewData["ArticuloId"] = new SelectList(_articuloService.GetAll(), "Id", "Id", local.ArticuloId);
             return View(local);
         }
 
         // GET: Local/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -93,7 +97,7 @@ namespace Parcial2.Controllers
             {
                 return NotFound();
             }
-            ViewData["ArticuloId"] = new SelectList(new List<Articulo>(), "Id", "Id", local.ArticuloId);
+            ViewData["ArticuloId"] = new SelectList(_articuloService.GetAll(), "Id", "Id", local.ArticuloId);
             return View(local);
         }
 
@@ -102,24 +106,27 @@ namespace Parcial2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,NombreDeSucursal,Direccion,Telefono,Mail,ArticuloId")] Local local)
+        public IActionResult Edit(int id, [Bind("Id,NombreDeSucursal,Direccion,Telefono,Mail,ArticuloId")] Local local)
         {
             if (id != local.Id)
             {
                 return NotFound();
             }
-            
+
+            ModelState.Remove("Articulo");
+            ModelState.Remove("Talles");
+
             if (ModelState.IsValid)
             {
                 _localService.Update(local);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArticuloId"] = new SelectList(new List<Articulo>(), "Id", "Id", local.ArticuloId);
+            ViewData["ArticuloId"] = new SelectList(_articuloService.GetAll(), "Id", "Id", local.ArticuloId);
             return View(local);
         }
 
         // GET: Local/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -138,7 +145,7 @@ namespace Parcial2.Controllers
         // POST: Local/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
 
             var local = _localService.GetById(id);

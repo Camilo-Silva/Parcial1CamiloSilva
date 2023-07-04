@@ -29,10 +29,15 @@ public class ArticuloService : IArticuloService
         }        
     }
 
+    public List<Articulo> GetAll()
+    {
+        var query = GetQuery();
+        return query.ToList();
+    }
+
     public List<Articulo> GetAll(string filter)
     {
-        var query = from descripcion in _context.Articulo select descripcion;
-
+        var query = GetQuery();
         if (!string.IsNullOrEmpty(filter))
         {
             query = query.Where(x => x.Descripcion.ToUpper().Contains(filter));
@@ -42,7 +47,7 @@ public class ArticuloService : IArticuloService
 
     public Articulo? GetById(int id)
     {
-        var articulo = _context.Articulo
+        var articulo = GetQuery()
                     .Include(x => x.Locales).Include(x => x.Talles)
                     .FirstOrDefault(m => m.Id == id);
 
@@ -53,6 +58,11 @@ public class ArticuloService : IArticuloService
     {
         _context.Update(obj);
         _context.SaveChanges();
+    }
+
+    private IQueryable<Articulo> GetQuery()
+    {
+        return from descripcion in _context.Articulo select descripcion;
     }
 }
 
