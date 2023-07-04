@@ -76,6 +76,7 @@ namespace Parcial2.Controllers
             ModelState.Remove("Articulo");
             if (ModelState.IsValid)
             {
+                // var articulos = _articuloService.GetAll().Where(x=> localService.ArticuloId.Contains(x.Id));
                 _localService.Create(local);
 
                 return RedirectToAction(nameof(Index));

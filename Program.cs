@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Parcial2.Data;
@@ -8,6 +9,10 @@ builder.Services.AddDbContext<ArticuloContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("ArticuloContext") ?? throw new InvalidOperationException("Connection string 'ArticuloContext' not found.")));
 
 // Add services to the container.
+builder.Services.AddDefaultIdentity<IdentityUser>()
+    .AddRoles<IdentityRole>()
+    .AddEntityFrameworkStores<ArticuloContext>();
+
 builder.Services.AddControllersWithViews();
 
 //Acá inyectamos nuestra interfaz
@@ -35,5 +40,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapRazorPages();
 
 app.Run();

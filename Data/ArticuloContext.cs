@@ -1,13 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Parcial2.Models;
 
 namespace Parcial2.Data
 {
-    public class ArticuloContext : DbContext
+    public class ArticuloContext : IdentityDbContext
     {
         public ArticuloContext (DbContextOptions<ArticuloContext> options)
             : base(options)
@@ -31,6 +28,9 @@ namespace Parcial2.Data
             .HasMany(p => p.Talles)
             .WithMany(p => p.Articulos)
             .UsingEntity("ArticuloTalle");
+
+            //Llama a la clase madre
+            base.OnModelCreating(modelBuilder);
         }
     }
 }
