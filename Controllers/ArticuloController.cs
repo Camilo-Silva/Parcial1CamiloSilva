@@ -24,7 +24,7 @@ namespace Parcial2.Controllers
         }
 
         // GET: Articulo
-        public async Task<IActionResult> Index(string descripcionFilter)
+        public IActionResult Index(string descripcionFilter)
         {
 
             var model = new ArticulosViewModel();
@@ -34,7 +34,7 @@ namespace Parcial2.Controllers
         }
 
         // GET: Articulo/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -72,7 +72,7 @@ namespace Parcial2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Descripcion,Precio,Categoria,IsPromo,Stock")] ArticulosCreateViewModel articuloView)
+        public IActionResult Create([Bind("Id,Descripcion,Precio,Categoria,IsPromo,Stock")] ArticulosCreateViewModel articuloView)
         {
 
             if (ModelState.IsValid)
@@ -92,7 +92,7 @@ namespace Parcial2.Controllers
         }
 
         // GET: Articulo/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -112,7 +112,7 @@ namespace Parcial2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Descripcion,Precio,Categoria,IsPromo,Stock")] Articulo articulo)
+        public IActionResult Edit(int id, [Bind("Id,Descripcion,Precio,Categoria,IsPromo,Stock")] Articulo articulo)
         {
             if (id != articulo.Id)
             {
@@ -144,7 +144,7 @@ namespace Parcial2.Controllers
         }
 
         // GET: Articulo/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -164,7 +164,7 @@ namespace Parcial2.Controllers
         // POST: Articulo/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult DeleteConfirmed(int id)
         {
             _articuloService.Delete(id);
             return RedirectToAction(nameof(Index));
