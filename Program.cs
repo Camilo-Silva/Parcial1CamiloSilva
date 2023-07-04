@@ -12,7 +12,7 @@ builder.Services.AddControllersWithViews();
 
 //Acá inyectamos nuestra interfaz
 builder.Services.AddScoped<ILocalService, LocalService>();
-// builder.Services.AddScoped<IArticuloService, ArticuloService>();
+builder.Services.AddScoped<IArticuloService, ArticuloService>();
 
 
 var app = builder.Build();

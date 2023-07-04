@@ -5,8 +5,8 @@ namespace Parcial2.Services;
 public interface IArticuloService
 {
     void Create(Articulo obj);
-    List<Articulo> GetAll(string descripcionFilter);
+    List<Articulo> GetAll(string filter);
     void Update(Articulo obj);
-    void Delete(Articulo id);
+    void Delete(int id);
     Articulo? GetById(int id);
 }
