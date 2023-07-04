@@ -7,35 +7,38 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Parcial2.Data;
 using Parcial2.Models;
+using Parcial2.Services;
 using Parcial2.ViewModels;
 
 namespace Parcial2.Controllers
 {
     public class LocalController : Controller
     {
-        private readonly ArticuloContext _context;
+        //Inyectamos servicio
+        private ILocalService _localService;
 
-        public LocalController(ArticuloContext context)
+        //Pasamos por parametro Interface para poder implementar la interface
+        public LocalController(ILocalService localService)
         {
-            _context = context;
+            _localService = localService;
         }
 
         // GET: Local
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var articuloContext = _context.Local.Include(l => l.Articulo);
-            return View(await articuloContext.ToListAsync());
+            var list = _localService.GetAll();
+            return View(list);
         }
 
         // GET: Local/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
-            if (id == null || _context.Local == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var local = await _context.Local.Include(l => l.Articulo).FirstOrDefaultAsync(m => m.Id == id);
+            var local = _localService.GetById(id.Value);
             if (local == null)
             {
                 return NotFound();
@@ -54,7 +57,8 @@ namespace Parcial2.Controllers
         // GET: Local/Create
         public IActionResult Create()
         {
-            ViewData["ArticuloId"] = new SelectList(_context.Articulo, "Id", "Id");
+            // var menuList = _localService.GetAll();
+            ViewData["Articulo"] = new SelectList(new List<Articulo>(), "Id", "Articulo");
             return View();
         }
 
@@ -63,33 +67,33 @@ namespace Parcial2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,NombreDeSucursal,Direccion,Telefono,Mail,ArticuloId")] Local local)
+        public IActionResult Create([Bind("Id,NombreDeSucursal,Direccion,Telefono,Mail,ArticuloId")] Local local)
         {
             ModelState.Remove("Articulo");
             if (ModelState.IsValid)
             {
-                _context.Add(local);
-                await _context.SaveChangesAsync();
+                _localService.Create(local);
+             
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArticuloId"] = new SelectList(_context.Articulo, "Id", "Id", local.ArticuloId);
+            ViewData["ArticuloId"] = new SelectList(new List<Articulo>(), "Id", "Id", local.ArticuloId);
             return View(local);
         }
 
         // GET: Local/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Local == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var local = await _context.Local.FindAsync(id);
+            var local = _localService.GetById(id.Value);
             if (local == null)
             {
                 return NotFound();
             }
-            ViewData["ArticuloId"] = new SelectList(_context.Articulo, "Id", "Id", local.ArticuloId);
+            ViewData["ArticuloId"] = new SelectList(new List<Articulo>(), "Id", "Id", local.ArticuloId);
             return View(local);
         }
 
@@ -107,39 +111,22 @@ namespace Parcial2.Controllers
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(local);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LocalExists(local.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                _localService.Update(local);
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ArticuloId"] = new SelectList(_context.Articulo, "Id", "Id", local.ArticuloId);
+            ViewData["ArticuloId"] = new SelectList(new List<Articulo>(), "Id", "Id", local.ArticuloId);
             return View(local);
         }
 
         // GET: Local/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Local == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
-            var local = await _context.Local
-                .Include(l => l.Articulo)
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var local = _localService.GetById(id.Value);
             if (local == null)
             {
                 return NotFound();
@@ -153,23 +140,18 @@ namespace Parcial2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Local == null)
-            {
-                return Problem("Entity set 'ArticuloContext.Local'  is null.");
-            }
-            var local = await _context.Local.FindAsync(id);
+
+            var local = _localService.GetById(id);
             if (local != null)
             {
-                _context.Local.Remove(local);
+                _localService.Delete(local);
             }
-            
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
         private bool LocalExists(int id)
         {
-          return (_context.Local?.Any(e => e.Id == id)).GetValueOrDefault();
+            return _localService.GetById(id) != null;
         }
     }
 }
