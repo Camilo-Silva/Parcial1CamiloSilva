@@ -30,7 +30,7 @@ namespace Parcial2.Controllers
         // GET: Local
         public IActionResult Index()
         {
-            var list = _localService.GetAll();
+            var list = _localService.GetAllLocales();
             return View(list);
         }
 
@@ -43,19 +43,19 @@ namespace Parcial2.Controllers
             }
 
             var local = _localService.GetById(id.Value);
-            if (local == null)
+            if ((local) == null)
             {
                 return NotFound();
             }
 
-            // var viewModel = new LocalDetailViewModel();
-            // viewModel.NombreDeSucursal = local.NombreDeSucursal;
-            // viewModel.Direccion = local.Direccion;
-            // viewModel.Telefono = local.Telefono;
-            // viewModel.Mail = local.Mail;
-            // viewModel.Articulos = local.Articulos != null ? local.Articulos : new List<Articulo>();
+            var viewModel = new LocalDetailViewModel();
+            viewModel.NombreDeSucursal = local.NombreDeSucursal;
+            viewModel.Direccion = local.Direccion;
+            viewModel.Telefono = local.Telefono;
+            viewModel.Mail = local.Mail;
+            viewModel.Articulo = local.Articulo; //!= null ? local.Articulo : new List<Articulo>();
 
-            return View(local);
+            return View(viewModel);
         }
 
         // GET: Local/Create
