@@ -29,7 +29,7 @@ namespace Parcial2.Migrations
 
                     b.HasIndex("TallesId");
 
-                    b.ToTable("ArticuloTalle");
+                    b.ToTable("ArticuloTalle", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -251,7 +251,7 @@ namespace Parcial2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Articulo");
+                    b.ToTable("Articulo", (string)null);
                 });
 
             modelBuilder.Entity("Parcial2.Models.Local", b =>
@@ -283,7 +283,7 @@ namespace Parcial2.Migrations
 
                     b.HasIndex("ArticuloId");
 
-                    b.ToTable("Local");
+                    b.ToTable("Local", (string)null);
                 });
 
             modelBuilder.Entity("Parcial2.Models.Talle", b =>
@@ -301,7 +301,7 @@ namespace Parcial2.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Talle");
+                    b.ToTable("Talle", (string)null);
                 });
 
             modelBuilder.Entity("ArticuloTalle", b =>

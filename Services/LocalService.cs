@@ -1,6 +1,7 @@
 using Parcial2.Data;
 using Parcial2.Models;
 using Microsoft.EntityFrameworkCore;
+using Parcial2.ViewModels;
 
 namespace Parcial2.Services;
 public class LocalService : ILocalService
@@ -22,6 +23,11 @@ public class LocalService : ILocalService
         _context.SaveChanges();
     }
 
+    public List<Local> GetAllLocales()
+    {
+        var query = GetQuery();
+        return query.ToList();
+    }
     public List<Local> GetAll()
     {
         return _context.Local.Include(l => l.Articulo).ToList();
@@ -29,7 +35,9 @@ public class LocalService : ILocalService
 
     public Local? GetById(int id)
     {
-        var local = _context.Local.Include(l => l.Articulo).FirstOrDefault(m => m.Id == id);
+        var local = GetQuery()
+                    .Include(l => l.Articulo)
+                    .FirstOrDefault(m => m.Id == id);
 
         return local;
     }
@@ -38,5 +46,9 @@ public class LocalService : ILocalService
     {
         _context.Update(obj);
         _context.SaveChanges();
+    }
+    private IQueryable<Local> GetQuery()
+    {
+        return from descripcion in _context.Local select descripcion;
     }
 }

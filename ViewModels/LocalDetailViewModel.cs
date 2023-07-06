@@ -16,7 +16,7 @@ public class LocalDetailViewModel
     public int ArticuloId { get; set; }
      
     // Propiedad virtual para usarse en el entityFramework para traer el artículo del local
-    // public virtual Articulo Articulo { get; set; }
+    public virtual Articulo Articulo { get; set; }
     public virtual List<Articulo> Articulos { get; set; }
    
 }
